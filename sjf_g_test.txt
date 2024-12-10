@@ -1,0 +1,18 @@
+# sjf
+# Here's how you create aperiodic jobs
+# timestamp APERIODIC_JOB_ARRIVAL size static_priority
+10 APERIODIC_JOB_ARRIVAL  60 2  # job 0
+20 APERIODIC_JOB_ARRIVAL  40 3  # job 1
+30 APERIODIC_JOB_ARRIVAL  10 5  # job 2
+40 APERIODIC_JOB_ARRIVAL  40 1  # job 3
+
+# Total running time should be 160
+# T10  Job 0 arrives add to queue  // queue is: J0
+# T10  Start job 0 
+# T20  Job 1 arrives add to queue // queue is: J1, J0
+# T30  Job 2 arrives add to queue // queue is: J2, J1, J0
+# T40  Job 3 arrives add to queue // queue is: J2, J1, J3, J0
+# T70  Job 0 finishes switch to Job 2 // queue is: J2, J1, J3
+# T80  Job 2 finishes switch to job 1 // queue is: J1,J3
+# T120 Job 1 finishes switch to job 3 // queue is: J3
+# T160 Job 3 finishes ALL JOBS DONE

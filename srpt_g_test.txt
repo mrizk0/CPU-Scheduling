@@ -1,0 +1,22 @@
+# srpt
+# Here's how you create aperiodic jobs
+# timestamp APERIODIC_JOB_ARRIVAL size static_priority
+10 APERIODIC_JOB_ARRIVAL 100 2  # job 0
+20 APERIODIC_JOB_ARRIVAL  50 3  # job 1
+30 APERIODIC_JOB_ARRIVAL  40 5  # job 2
+40 APERIODIC_JOB_ARRIVAL  10 1  # job 3
+50 APERIODIC_JOB_ARRIVAL  90 7  # job 4
+
+# Total running time should be 300
+# T10  Job 0 arrive and scheduled // queue is: J0
+# T20  Job 1 arrives
+# T20  Job 0 is stopped and replaced by Job 1 // queue: J1, J0 // J0 90 remaining
+# T30  Job 2 arrives and gets added to queue // queue: J1, J2, J0 
+# T40  Job 3 arrives 
+# T40  Job 1 is stopped and replaced by Job 3 // queue: J3, J1, J2, J0 // J1 30 remaining
+# T50  Job 4 arrives and gets added to queue // queue: J3, J1, J2, J0, J4
+# T50  Job 3 finishes and gets replaced by job 1 // queue: J1, J2, J0, J4
+# T80  Job 1 finishes and gets replaced by job 2 // queue: J2, J0, J4
+# T120 Job 2 finishes and gets replaced by job 0 // queue: J0, J4
+# T210 Job 0 finishes and gets replaced by job 4 // queue: J4\
+# T300 Job 4 is done ALL JOBS DONE

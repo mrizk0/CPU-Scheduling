@@ -1,0 +1,9 @@
+# timestamp APERIODIC_JOB_ARRIVAL size static_priority
+# for srpt, need to check preemption
+#turnaround = completion - arrival....................238 avg
+#throughput = jobs_completed / total duration.........96
+10 APERIODIC_JOB_ARRIVAL 100 5
+20 APERIODIC_JOB_ARRIVAL 200 3
+30 APERIODIC_JOB_ARRIVAL  50 2
+40 APERIODIC_JOB_ARRIVAL 20 6
+50 APERIODIC_JOB_ARRIVAL 100 6

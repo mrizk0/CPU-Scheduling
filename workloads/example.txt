@@ -1,0 +1,25 @@
+# example event file consisting of of three job arrivals
+
+# Here's how you create aperiodic jobs
+# timestamp APERIODIC_JOB_ARRIVAL size static_priority
+10 APERIODIC_JOB_ARRIVAL 100 2
+20 APERIODIC_JOB_ARRIVAL 200 3
+30 APERIODIC_JOB_ARRIVAL  50 1
+
+# Here's how you would create sporadic jobs
+# timestamp SPORADIC_JOB_ARRIVAL size absolute deadline
+#20 SPORADIC_JOB_ARRIVAL 100 300
+#30 SPORADIC_JOB_ARRIVAL  50 300
+
+# Here's how you would create periodic jobs
+# timetamp PERIODIC_TASK_ARRIVAL period slice numiters
+#10 PERIODIC_TASK_ARRIVAL 300 30 10
+#10 PERIODIC_TASK_ARRIVAL 300 90 10
+
+# Print results, can be placed at other times to print partial statistics
+#1000 PRINT_ALL
+#1000 PRINT_STATS
+#1000 PRINT_JOB_QUEUES
+#1000 PRINT_EVENT_QUEUE
+#1000 DISPLAY_QUEUE_DEPTHS
+

@@ -1,0 +1,22 @@
+# priority
+# Here's how you create aperiodic jobs
+# timestamp APERIODIC_JOB_ARRIVAL size static_priority
+10 APERIODIC_JOB_ARRIVAL 100 2  # job 0
+20 APERIODIC_JOB_ARRIVAL 100 5  # job 1
+30 APERIODIC_JOB_ARRIVAL 100 10 # job 2
+40 APERIODIC_JOB_ARRIVAL  90 2  # job 3
+40 APERIODIC_JOB_ARRIVAL  50 2  # job 4
+
+# Total running time should be 450
+# T10  Job 0 arrives, added to queue, and scheduled // queue: J0
+# T20  Job 1 arrives
+# T20  Job 0 is stopped and replaced by Job 1 // queue: J1, J0 // J0 remaining 90
+# T30  Job 2 arrives
+# T30  Job 1 is stopped and repleced by Job 2 // queue: J2, J1, J0 // J1 remaining 90
+# T40  Job 3 arrives and gets added to the queue // queue: J2, J1, J0, J3
+# T40  Job 4 arrives and gets added to the queue // queue: J2, J1, J0, J4, J3
+# T130 Job 2 finishes and is replced by job 1 // queue: J1, J0, J4, J3
+# T220 Job 1 finishes and is replced by job 0 // queue: J0, J4, J3
+# T310 Job 0 finishes and is replced by job 4 // queue: J4, J3
+# T360 Job 4 finishes and is replced by job 3 // queue: J3
+# T450 Job 3 finishes ALL JOBS DONE

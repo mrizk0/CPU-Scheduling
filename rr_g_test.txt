@@ -1,0 +1,25 @@
+# Here's how you create aperiodic jobs
+# timestamp APERIODIC_JOB_ARRIVAL size static_priority
+0 APERIODIC_JOB_ARRIVAL   7 2  # job 0
+0 APERIODIC_JOB_ARRIVAL   4 3  # job 1
+0 APERIODIC_JOB_ARRIVAL   5 1  # job 2
+
+# Total running time should be 16
+
+# do with a Quantum of 2
+# Total running time should be 16
+
+# all arrive and add to queue
+# T0  add job 0
+# T0  start job 0
+# T0  add job 1 to queue
+# T0  add job 2 to queue
+# T2  Stop job 0 start job 1 // job 0 remaining size 5
+# T4  Stop job 1 start job 2 // job 1 remianing size 2
+# T6  Stop job 2 start job 0 // job 2 remaining size 3
+# T8  Stop job 0 start job 1 // job 0 remaining size 3
+# T10 Finished job 1 switching to 2 
+# T12 Stop job 2 start job 0 // job 2 remaining time 1
+# T14 Stop job 0 start job 2 // job 0 remianing time 1
+# T15 Finished job 2 switiching to 0
+# T16 Finished job 0 ALL JOBS DONE
